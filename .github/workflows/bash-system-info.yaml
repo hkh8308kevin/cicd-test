@@ -1,0 +1,34 @@
+version: '1.0'
+flow:
+  - id: bash_system_info
+    name: "Get System Info (Bash)"
+    type: "script"
+    runtime: "bash"
+    script: |
+      uname -a
+    next: pwsh_system_info
+
+  - id: pwsh_system_info
+    name: "Get System Info (PowerShell)"
+    type: "script"
+    runtime: "pwsh"
+    script: |
+      Get-ComputerInfo
+    next: python_system_info
+
+  - id: python_system_info
+    name: "Get System Info (Python)"
+    type: "script"
+    runtime: "python"
+    script: |
+      import sys
+      print(sys.version)
+    next: node_system_info
+
+  - id: node_system_info
+    name: "Get System Info (Node.js)"
+    type: "script"
+    runtime: "node"
+    script: |
+      console.log(process.version);
+    next: null
