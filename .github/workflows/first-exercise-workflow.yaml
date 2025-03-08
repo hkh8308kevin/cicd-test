@@ -2,7 +2,7 @@ name: first-exercise-workflow
 on: [push,pull_request]
 
 jobs:
-  shell-cmd-job:
+  shell-cmd-job:    # 다른 이름응로 변경가능/고정된 이름이 아님
     runs-on: ubuntu-latest
     steps:
       - name: multiple line cmd
