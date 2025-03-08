@@ -1,34 +1,28 @@
-name: Feather Flow Sysinfo
+name: Multi-Shell Environment Exercise
 on: [push]
 
 jobs:
-  system-info:
+  multi-shell-job:
     runs-on: windows-latest
     steps:
-      - name: Get System Info (Bash)
+      - name: Bash - System Information
         shell: bash
-        run: |
-          echo "::group::Bash System Info"
-          uname -a
-          echo "::endgroup::"
-      
-      - name: Get System Info (PowerShell)
+        run: uname -a
+        
+      - name: PowerShell - Computer Information
         shell: pwsh
         run: |
-          echo "::group::PowerShell System Info"
           Get-ComputerInfo
-          echo "::endgroup::"
-      
-      - name: Get System Info (Python)
+          # $PSVersionTable
+          # Get-Host | Select-Object Version
+        
+      - name: Python - Version Information
         shell: python
         run: |
-          echo "::group::Python System Info"
-          python -c "import sys; print(sys.version)"
-          echo "::endgroup::"
-      
-      - name: Get System Info (Node.js)
-        shell: node
+          import sys
+          print(sys.version)
+          
+      - name: Node.js - Version Information
+        shell: node {0}
         run: |
-          echo "::group::Node.js System Info"
-          node -e "console.log(process.version)"
-          echo "::endgroup::"
+          console.log(process.version)
