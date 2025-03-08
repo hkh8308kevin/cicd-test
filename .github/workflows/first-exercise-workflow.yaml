@@ -1,4 +1,4 @@
-ame: first-exercise-workflow
+name: first-exercise-workflow
 on: [push, pull_request]
 jobs:
     check-python:
